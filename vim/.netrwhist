@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/etc/fonts/conf.d'
+let g:netrw_dirhist_2='/home/liwei/src/v6api/pktinfo'
+let g:netrw_dirhist_3='/home/liwei/perl5/lib/perl5/Dancer/Template'
+let g:netrw_dirhist_4='/home/liwei/libmnl-1.0.3/examples'
+let g:netrw_dirhist_5='/home/liwei/libmnl-1.0.3/examples/netfilter'
+let g:netrw_dirhist_6='/home/liwei/perl5/lib/perl5/x86_64-linux-thread-multi/Net/DNS'
+let g:netrw_dirhist_7='/home/liwei/svn/linux_network_15/1_Product_Lib/Delivery/Linux_Network_15/07_検証ツール・ソース一式/ネットワーク関連のツール/v6api/CVSROOT'
+let g:netrw_dirhist_8='/home/liwei/perl5/lib/perl5/Dancer'
