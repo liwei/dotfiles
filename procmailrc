@@ -1,0 +1,28 @@
+# .procmailrc
+
+MAILDIR=$HOME/Mail
+DEFAULT=$MAILDIR/inbox
+LOGFILE=$HOME/.procmail.log
+
+:0:
+* ^List-ID: .*python-cn.googlegroups.com
+CPyUG
+
+:0:
+* ^List-ID: .*netdev.vger.kernel.org
+netdev
+
+:0:
+* ^List-ID: .*njlug.googlegroups.com
+NJLUG
+
+:0:
+* ^List-Id: <qemu-devel.nongnu.org>
+qemu
+
+:0:
+* ^List-Id: Development discussions about the libvirt library & tools
+libvirt
+
+:0:
+inbox
