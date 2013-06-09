@@ -1,0 +1,30 @@
+# vim: ft=muttrc
+
+# 通知 getmail 立刻检查新邮件
+macro index,pager G "<shell-escape>getmail -r /home/liwei/.getmail/getmailrc &>/dev/null<enter>" 'Retrieve mail from POP server'
+
+# 下载/签名 gpg 公钥
+macro pager J "!gpg --keyserver pgp.mit.edu --recv-key " "Get PGP Key"
+macro pager K "!gpg --lsign-key " "Sign PGP Key"
+
+# 标记所有新邮件为已读
+macro index <esc>M "T~U<enter>;WN<untag-pattern>~T<enter>"
+
+# 快速保存附件
+macro attach s "<save-entry><kill-line>/tmp/<enter>a"
+
+# http://www.nixternal.com/mark-e-mails-in-mutt-as-tasks-in-taskwarrior/
+# https://github.com/ValiValpas/taskopen
+macro index,pager <esc>t "\
+	<pipe-message>~/.mutt/mutt-todotxt\n\
+	:set wait_key=no\n\
+	:set pipe_decode=no" "Add to Task"
+
+# 显示当前邮箱里曾经被我回复过的邮件(~Q)，包括我的回复(~P)
+macro index "<F5>" "<limit>~Q | ~P<enter>"
+# 显示当前邮箱里最近两天的邮件
+macro index "<F6>" "<limit>~d `date -d '1 day ago' +%d/%m`-<enter>"
+# 显示当前邮箱里最近一周的邮件
+macro index "<F7>" "<limit>~d `date -d '1 week ago' +%d/%m`-<enter>"
+# 显示当前邮箱里最近一月的邮件
+macro index "<F8>" "<limit>~d `date -d '1 month ago' +%d/%m`-<enter>"

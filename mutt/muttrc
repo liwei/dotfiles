@@ -1,0 +1,101 @@
+source ~/.mutt/headers
+source ~/.mutt/charset
+source ~/.mutt/colors
+source ~/.mutt/aliases
+source ~/.mutt/macros
+source ~/.mutt/bindings
+source ~/.mutt/hooks
+source ~/.mutt/auto_views
+source ~/.mutt/mailboxes
+
+# Path
+set alias_file		= ~/.mutt/aliases
+set certificate_file	= ~/.mutt/certificates
+set mailcap_path	= ~/.mutt/mailcap
+set signature		= ~/.mutt/signature
+
+# Folder
+set folder		= ~/Mail
+set record		= +sent
+set spoolfile		= +inbox
+set postponed		= +draft
+
+# 回信时自动包含原文
+set include
+# 回信时只包含原文(autoview的附件除外)
+set include_onlyfirst
+# 回信引文之前的符号
+set indent_str="> " 
+# 回信引文不用包含原文的信头
+set header=no
+# 采用msmtp发送邮件
+set sendmail="/usr/bin/msmtp"
+# 让mutt识别不同的邮箱
+alternates kiteday@gmail.com
+# 在mutt提示To:时，按tab显示通讯录
+# 在mutt按a，把发件人添加到通讯录
+set alias_file="~/.mutt/aliases"
+# 自定义显示界面
+set index_format="[%Z]  %D  %-20.20F  %s"
+set date_format="%m/%d"
+# 信件按话题/时间排序
+set sort		= threads
+set sort_aux		= reverse-last-date-received
+set sort_re
+set hide_thread_subject=no
+# 邮件正文折行时不要显示前导加号
+set markers=no
+# 实现从多个账户发送信件
+set use_from=yes
+# 此选项确保从真正的邮送域发送信件
+set envelope_from=yes
+# 默认使用的的邮送域
+set realname= "Li Wei"
+set from='liwei@anbutu.com'
+# 转发邮件时默认使用的主题
+set forward_format="Fwd: %s"
+# 转移信件时不必确认
+set confirmappend=no
+# 不允许折叠存在未读邮件的话题
+set collapse_unread=no
+# 撰写新邮件时不再提示是否使用草稿箱
+set recall=no
+# 将邮件正文解码再搜索
+set thorough_search=yes
+# 退出mutt前提示
+set quit=ask-yes
+# 用常见字符表示线索
+set ascii_chars=yes
+# 禁止PAGE键切换到下一封信件
+set pager_stop=yes
+# 快速回复，不用确认回复地址和主题
+set fast_reply=yes
+# 避免整页整页的翻，我们要一行一行的翻
+set menu_scroll
+# 撰写邮件时让我直接编辑CC
+set askcc=yes
+# 设定回信的模板
+set attribution="on %d, %n wrote:"
+# 采用作为附件而非作为引用的方式转发邮件
+# 为了在转发邮件时自动包含待转发邮件本身的附件，似乎暂时只有这个办法。
+set mime_forward=yes
+# 给邮件签名
+#set crypt_autosign=yes
+# 有新邮件时提醒
+set beep_new=yes
+# 查看邮件同时显示迷你线索
+set pager_index_lines=5
+# 允许跳到被折叠了的未读邮件
+set uncollapse_jump=yes
+# 使用 Reply-to 字段作回复地址
+set reply_to=yes
+# 解码后传递给管道解决中文问题
+set pipe_decode=yes
+# 右边据 7 个字符处折行
+set wrap=-7
+# 每五分钟检查/报告一次新邮件 300
+set timeout=300
+
+set mark_old=yes
+set wait_key=no
+set reply_regexp="^([rR][eE]([\[0-9\]+])*|aw):[ \t]*"

@@ -1,0 +1,22 @@
+text/html; w3m -dump -I %{charset} -T text/html %s; copiousoutput; nametemplate=%s.html; needsterminal;
+image/*; /usr/bin/display '%s'; needsterminal;
+
+application/x-diff-gzip; atool -l %s; copiousoutput;
+application/x-gtar; atool -l %s; copiousoutput;
+application/x-tar; atool -l %s; copiousoutput;
+application/x-tar-gz; atool -l %s; copiousoutput;
+application/x-rar-compressed; atool -l %s; copiousoutput;
+application/x-zip-compressed; atool -l %s; copiousoutput;
+application/x-gzip; atool -F tar+gzip -l %s; copiousoutput;
+application/zip; atool -l %s; copiousoutput;
+
+application/vnd.ms-excel; xlhtml -fw -nc -te -xp:0 -xr:0-200 %s 2>/dev/null | elinks -force-html -dump; copiousoutput; description=Microsoft Excel Document; nametemplate=%s.xls;
+application/ms-excel; xlhtml -fw -nc -te -xp:0 -xr:0-200 %s 2>/dev/null | elinks -force-html -dump; copiousoutput; description=Microsoft Excel Document; nametemplate=%s.xls;
+application/msexcel; xlhtml -fw -nc -te -xp:0 -xr:0-200 %s 2>/dev/null | elinks -force-html -dump; copiousoutput; description=Microsoft Excel Document; nametemplate=%s.xls;
+
+application/vnd.ms-word; antiword -w 0 %s; copiousoutput; description="Microsoft Word Text"; nametemplate=%s.doc;
+application/msword; antiword -w 0 %s; copiousoutput; description="Microsoft Word Text"; nametemplate=%s.doc;
+application/word; antiword -w 0 %s; copiousoutput; description="Microsoft Word Text"; nametemplate=%s.doc;
+
+application/x-pdf; evince %s;
+application/pdf; evince %s;

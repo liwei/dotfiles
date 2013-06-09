@@ -1,0 +1,9 @@
+# vim: ft=muttrc
+
+subscribe python-cn@googlegroups.com
+subscribe njlug@googlegroups.com
+subscribe netdev@vger.kernel.org
+subscribe libvir-list@redhat.com
+subscribe qemu-devel@nongnu.org
+
+mailboxes +inbox +sent +draft +NJLUG +netdev +CPyUG +libvirt +qemu

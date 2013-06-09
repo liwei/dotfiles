@@ -1,0 +1,14 @@
+# vim: ft=muttrc
+
+# 浏览通讯录时
+bind alias      N           search-opposite
+# 切换邮箱/查看目录时
+bind browser    i           exit
+bind browser    l           select-entry
+bind browser    <space>     select-entry
+# 查看附件时
+bind attach     i           exit
+bind attach     <space>     view-attach
+# 使用自定义查询
+bind editor     <Tab>       complete-query
+

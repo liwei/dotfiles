@@ -1,0 +1,7 @@
+# vim: ft=muttrc
+
+# 邮箱默认使用折叠方式显示
+folder-hook . "push '<collapse-all><first-entry>'"
+
+# 使用gbk解码gb2312
+iconv-hook gb2312 gbk

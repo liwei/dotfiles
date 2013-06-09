@@ -1,0 +1,7 @@
+# vim: ft=muttrc
+
+set locale		= `echo "${LC_ALL:-${LC_TIME:-${LANG}}}"`
+set charset		= "utf-8"
+set send_charset	= "us-ascii:gb2312:utf-8"
+set assumed_charset	= "gbk:utf-8"
+set rfc2047_parameters
