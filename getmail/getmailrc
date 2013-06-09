@@ -1,0 +1,18 @@
+# .getmailrc
+
+[options]
+verbose = 1
+read_all = false
+message_log = $HOME/.getmail/getmail.log
+
+[retriever]
+type = SimplePOP3SSLRetriever
+server = pop.googlemail.com
+port = 995
+username = liwei@anbutu.com
+password = <PASSWORD>
+
+[destination]
+type = MDA_external
+path = /usr/bin/procmail
+unixfrom = true
