@@ -1,0 +1,9 @@
+[user]
+	name = Li Wei
+	email = liwei@anbutu.com
+[color]
+	ui = auto
+[push]
+	default = simple
+[sendemail]
+	smtpserver = /usr/bin/msmtp
