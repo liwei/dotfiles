@@ -55,8 +55,8 @@ if has("gui_running")
   let psc_style='cool'
   colorscheme oceandeep
 else
-  colorscheme default
-  "set background=light
+  set background=dark
+  colorscheme solarized
 endif
 
 "Highlight current
