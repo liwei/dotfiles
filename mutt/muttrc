@@ -96,6 +96,8 @@ set wrap=-7
 # 每五分钟检查/报告一次新邮件 300
 set timeout=300
 
+set sleep_time=0
+
 set mark_old=yes
 set wait_key=no
 set reply_regexp="^([rR][eE]([\[0-9\]+])*|aw):[ \t]*"
