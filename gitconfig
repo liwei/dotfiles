@@ -7,3 +7,8 @@
 	default = simple
 [sendemail]
 	smtpserver = /usr/bin/msmtp
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
