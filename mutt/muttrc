@@ -98,6 +98,8 @@ set timeout=300
 # 使用通讯录显示邮件地址
 set reverse_alias=yes
 
+set sleep_time=0
+
 set mark_old=yes
 set wait_key=no
 set reply_regexp="^([rR][eE]([\[0-9\]+])*|aw):[ \t]*"
