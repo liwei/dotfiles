@@ -95,6 +95,8 @@ set pipe_decode=yes
 set wrap=-7
 # 每五分钟检查/报告一次新邮件 300
 set timeout=300
+# 使用通讯录显示邮件地址
+set reverse_alias=yes
 
 set mark_old=yes
 set wait_key=no
