@@ -11,3 +11,6 @@ unignore X-Mailer:
 unignore User-Agent:
 
 hdr_order From: To: CC: BCC: Subject: X-LDate: X-Label: X-Mailer: User-Agent:
+
+# 写邮件时可以编辑邮件头
+set edit_headers=yes
