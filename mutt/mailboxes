@@ -5,5 +5,6 @@ subscribe njlug@googlegroups.com
 subscribe netdev@vger.kernel.org
 subscribe libvir-list@redhat.com
 subscribe qemu-devel@nongnu.org
+subscribe openwrt-devel@lists.openwrt.org
 
-mailboxes +inbox +sent +draft +NJLUG +netdev +CPyUG +libvirt +qemu
+mailboxes +inbox +sent +draft +NJLUG +netdev +CPyUG +libvirt +qemu +openwrt
