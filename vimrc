@@ -1,4 +1,30 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Install vim-plug if we don't already have it
+if empty(glob("~/.vim/autoload/plug.vim"))
+    " Ensure all needed directories exist  (Thanks @kapadiamush)
+    execute '!mkdir -p ~/.vim/plugged'
+    execute '!mkdir -p ~/.vim/autoload'
+    " Download the actual plugin manager
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'a.vim'
+Plug 'minibufexpl.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-git', { 'for': 'git'  }
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs'
+
+call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Get out of VI's compatible mode..
@@ -15,7 +41,7 @@ filetype indent on
 set autoread
 
 "Have the mouse enabled all the time:
-set mouse=a
+set mouse=""
 
 "Set mapleader
 let mapleader = ","
@@ -31,8 +57,6 @@ nmap <leader>q :q<cr>
 map <leader>s :source ~/.vimrc<cr>
 "Fast editing of .vimrc
 map <leader>e :e! ~/.vimrc<cr>
-"When .vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
 
 "File encoding
 set encoding=utf-8
@@ -42,7 +66,6 @@ set ambiwidth=double
 
 "Tags
 "set tags=./tags,./../tags,./../../tags,./**/tags,tags
-"set tags+=/home/liwei/.vim/systags
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
@@ -50,20 +73,7 @@ set ambiwidth=double
 "Enable syntax hl
 syntax enable
 
-if has("gui_running")
-  set guioptions-=T
-  let psc_style='cool'
-  colorscheme oceandeep
-else
-  set background=dark
-  colorscheme solarized
-endif
-
-"Highlight current
-if has("gui_running")
-  set cursorline
-endif
-
+set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fileformats
@@ -139,11 +149,7 @@ set fdl=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set expandtab
-"set shiftwidth=4
-"set tabstop=4
-"set softtabstop=4
-"set textwidth=79
+set textwidth=79
 
 map <leader>t2 :set shiftwidth=2<cr>
 map <leader>t4 :set shiftwidth=4<cr>
@@ -168,20 +174,50 @@ set cindent
 "Wrap lines
 set wrap
 
-""""""""""""""""""""""""""""""
-" Minibuffer
-""""""""""""""""""""""""""""""
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-let g:bufExplorerSortBy = "name"
-autocmd BufRead,BufNew :call UMiniBufExplorer
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Cscope
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("cscope")
+    " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
+    set cscopetag
 
-""""""""""""""""""""""""""""""
-" Taglist
-""""""""""""""""""""""""""""""
-map <F2> :TlistToggle<cr>
+    " check cscope for definition of a symbol before checking ctags: set to 1
+    " if you want the reverse search order.
+    set csto=1
+
+    " add any cscope database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out  
+    " else add the database pointed to by environment variable 
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+
+    " show msg when any other cscope db added
+    set cscopeverbose  
+
+    """"""""""""" My cscope/vim key mappings
+    "
+    " The following maps all invoke one of the following cscope search types:
+    "
+    "   's'   symbol: find all references to the token under cursor
+    "   'g'   global: find global definition(s) of the token under cursor
+    "   'c'   calls:  find all calls to the function name under cursor
+    "   't'   text:   find all instances of the text under cursor
+    "   'e'   egrep:  egrep search for the word under cursor
+    "   'f'   file:   open the filename under cursor
+    "   'i'   includes: find files that include the filename under cursor
+    "   'd'   called: find functions that function under cursor calls
+
+    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC
@@ -191,24 +227,3 @@ noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 "Super paste
 inoremap <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
-
-" Set directory-wise configuration.
-" Search from the directory the file is located upwards to the root for
-" a local configuration file called .lvimrc and sources it.
-"
-" The local configuration file is expected to have commands affecting
-" only the current buffer.
-
-function SetLocalOptions(fname)
-	let dirname = fnamemodify(a:fname, ":p:h")
-	while "/" != dirname
-		let lvimrc  = dirname . "/.lvimrc"
-		if filereadable(lvimrc)
-			execute "source " . lvimrc
-			break
-		endif
-		let dirname = fnamemodify(dirname, ":p:h:h")
-	endwhile
-endfunction
-
-au BufNewFile,BufRead * call SetLocalOptions(bufname("%"))
