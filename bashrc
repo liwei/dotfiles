@@ -7,10 +7,10 @@ fi
 
 # User specific aliases and functions
 # alias
+alias ls="ls --color"
 alias la="ls -a"
 alias ll="ls -l"
-alias vim="gvim -v"
-alias vi="gvim -v"
+alias vi="vim"
 alias xclip='xclip -selection clipboard'
 
 # exports
