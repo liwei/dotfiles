@@ -12,8 +12,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'a.vim'
-Plug 'minibufexpl.vim'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/minibufexpl.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -22,7 +22,7 @@ Plug 'tpope/vim-git', { 'for': 'git'  }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'Rip-Rip/clang_complete'
+" Plug 'Rip-Rip/clang_complete'
 
 call plug#end()
 
