@@ -61,7 +61,7 @@ if [[ -z $CLOUD_IMAGE || ! -f $CLOUD_IMAGE ]]; then
 fi
 CLOUD_IMAGE=$(realpath $CLOUD_IMAGE)
 
-if [[ -f $SSH_KEY_FIEL ]]; then
+if [[ -f $SSH_KEY_FILE ]]; then
 	SSH_KEY=$(cat $SSH_KEY_FILE)
 fi
 
