@@ -4,17 +4,18 @@ usage() {
 	cat <<-EOF
 	Usage:
 	    $0 [options] -- [virt-install options]
-	    -i|--image: cloud image path (required option)
 	    -n|--name: instance name (default: instance-0)
 	    -r|--memory: instance memory size (default: 1024)
+	    -i|--image: cloud image path (required option)
+	    -k|--ssh-key: ssh public key to inject into instance (default: ~/.ssh/id_rsa.pub)
 	    -s|--disk-size: instance disk image size (default: 20G)
 	    -f|--disk-format: instance disk image format (default: qcow2)
 	    -p|--password: password for default user (default: goodluck)
-	    --ssh-key: ssh public key to inject into instance (default: ~/.ssh/id_rsa.pub)
+	    -h|--help: print usage and exit
 	EOF
 }
 
-TEMP=$(getopt -o 'n:r:i:d:h' -l 'name:,memory:,image:,ssh-key:,disk-size:,help' -n 'virt-install-cloud' -- "$@")
+TEMP=$(getopt -o 'n:r:i:k:s:f:p:h' -l 'name:,memory:,image:,ssh-key:,disk-size:,disk-format:,password:,help' -n 'virt-install-cloud' -- "$@")
 if [[ $? -ne 0 ]]; then
 	usage >&2
 	exit 1
@@ -31,7 +32,7 @@ while :; do
 			MEMORY_SIZE="$2"; shift 2; continue;;
 		'-i'|'--image')
 			CLOUD_IMAGE="$2"; shift 2; continue;;
-		'--ssh-key')
+		'-k'|'--ssh-key')
 			SSH_KEY_FILE="$2"; shift 2; continue;;
 		'-s'|'--disk-size')
 			DISK_SIZE="$2"; shift 2; continue;;
@@ -39,7 +40,7 @@ while :; do
 			DISK_FORMAT="$2"; shift 2; continue;;
 		'-p'|'--password')
 			PASSWORD="$2"; shift 2; continue;;
-		'--help')
+		'-h'|'--help')
 			usage; shift; exit 0;;
 		'--')
 			shift; break;;
