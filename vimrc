@@ -21,6 +21,7 @@ Plug 'tpope/vim-git', { 'for': 'git'  }
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
 
 " Plug 'Rip-Rip/clang_complete'
 
