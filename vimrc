@@ -18,12 +18,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-git', { 'for': 'git'  }
-
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
-
-" Plug 'Rip-Rip/clang_complete'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 
 call plug#end()
 
