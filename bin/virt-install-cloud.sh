@@ -50,7 +50,7 @@ done
 
 INSTANCE_NAME=${INSTANCE_NAME:-"instance-0"}
 MEMORY_SIZE=${MEMORY_SIZE:-"1024"}
-SSH_KEY_FILE=${SSH_KEY_FILE:-"~/.ssh/id_rsa.pub"}
+SSH_KEY_FILE=${SSH_KEY_FILE:-"$HOME/.ssh/id_rsa.pub"}
 DISK_SIZE=${DISK_SIZE:-"20G"}
 DISK_FORMAT=${DISK_FORMAT:-"qcow2"}
 PASSWORD=${PASSWORD:-"goodluck"}
