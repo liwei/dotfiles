@@ -121,7 +121,9 @@ virsh vol-create-as --pool default \
 virt-install --import \
 	--cpu host \
 	--name $INSTANCE_NAME \
-	--disk vol=default/$INSTANCE_NAME.$DISK_FORMAT \
-	--disk path=$TEMP_DIR/cidata.iso,device=cdrom \
 	--memory $MEMORY_SIZE \
+	--controller scsi,model=virtio-scsi \
+	--disk vol=default/$INSTANCE_NAME.$DISK_FORMAT,bus=scsi \
+	--disk path=$TEMP_DIR/cidata.iso,device=cdrom \
+	--network network=default,model=virtio \
 	"$@"
