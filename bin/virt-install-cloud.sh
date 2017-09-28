@@ -65,6 +65,15 @@ if [[ -f $SSH_KEY_FILE ]]; then
 	SSH_KEY=$(cat $SSH_KEY_FILE)
 fi
 
+trap cleanup EXIT SIGTERM
+cleanup() {
+	if [[ -d $TEMP_DIR ]]; then
+		rm -rf $TEMP_DIR
+	fi
+
+	virsh change-media $INSTANCE_NAME $TEMP_DIR/cidata.iso --eject --config
+}
+
 TEMP_DIR=$(mktemp -d)
 chmod 755 $TEMP_DIR
 pushd $TEMP_DIR
