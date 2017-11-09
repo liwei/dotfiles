@@ -74,6 +74,12 @@ cleanup() {
 	virsh change-media $INSTANCE_NAME $TEMP_DIR/cidata.iso --eject --config
 }
 
+trap rm_volume ERR
+rm_volume() {
+	virsh vol-delete --pool=default \
+		$INSTANCE_NAME.qcow2
+}
+
 TEMP_DIR=$(mktemp -d)
 chmod 755 $TEMP_DIR
 pushd $TEMP_DIR
