@@ -132,4 +132,5 @@ virt-install --import \
 	--disk vol=default/$INSTANCE_NAME.$DISK_FORMAT,bus=scsi \
 	--disk path=$TEMP_DIR/cidata.iso,device=cdrom \
 	--network network=default,model=virtio \
+	--cpu host-passthrough \
 	"$@"
