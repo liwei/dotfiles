@@ -85,7 +85,7 @@ chmod 755 $TEMP_DIR
 pushd $TEMP_DIR
 cat > meta-data <<-EOF
 	instance-id: $INSTANCE_NAME
-	local-hostname: $INSTANCE_NAME.localdomain
+	local-hostname: $INSTANCE_NAME
 EOF
 
 cat > user-data <<-EOF
