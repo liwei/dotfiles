@@ -18,7 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-git', { 'for': 'git'  }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  }
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
@@ -51,7 +51,6 @@ let g:mapleader = ","
 
 "Fast saving
 nmap <leader>w :w!<cr>
-nmap <leader>f :find<cr>
 nmap <leader>q :q<cr>
 
 "Fast reloading of the .vimrc
@@ -81,9 +80,6 @@ set background=dark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Favorite filetypes
 set ffs=unix,dos,mac
-
-nmap <leader>fd :se ff=dos<cr>
-nmap <leader>fu :se ff=unix<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM userinterface
